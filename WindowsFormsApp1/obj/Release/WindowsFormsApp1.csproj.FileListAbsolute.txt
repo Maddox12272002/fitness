@@ -1,0 +1,34 @@
+C:\Users\Nodz\Desktop\The dream\C#\OOP 2\Project\WindowsFormsApp1\WindowsFormsApp1\bin\Release\WindowsFormsApp1.exe.config
+C:\Users\Nodz\Desktop\The dream\C#\OOP 2\Project\WindowsFormsApp1\WindowsFormsApp1\bin\Release\WindowsFormsApp1.exe
+C:\Users\Nodz\Desktop\The dream\C#\OOP 2\Project\WindowsFormsApp1\WindowsFormsApp1\bin\Release\WindowsFormsApp1.pdb
+C:\Users\Nodz\Desktop\The dream\C#\OOP 2\Project\WindowsFormsApp1\WindowsFormsApp1\obj\Release\WindowsFormsApp1.csproj.AssemblyReference.cache
+C:\Users\Nodz\Desktop\The dream\C#\OOP 2\Project\WindowsFormsApp1\WindowsFormsApp1\obj\Release\WindowsFormsApp1.csproj.SuggestedBindingRedirects.cache
+C:\Users\Nodz\Desktop\The dream\C#\OOP 2\Project\WindowsFormsApp1\WindowsFormsApp1\obj\Release\WindowsFormsApp1.Form1.resources
+C:\Users\Nodz\Desktop\The dream\C#\OOP 2\Project\WindowsFormsApp1\WindowsFormsApp1\obj\Release\WindowsFormsApp1.Form2.resources
+C:\Users\Nodz\Desktop\The dream\C#\OOP 2\Project\WindowsFormsApp1\WindowsFormsApp1\obj\Release\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\Nodz\Desktop\The dream\C#\OOP 2\Project\WindowsFormsApp1\WindowsFormsApp1\obj\Release\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\Nodz\Desktop\The dream\C#\OOP 2\Project\WindowsFormsApp1\WindowsFormsApp1\obj\Release\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\Nodz\Desktop\The dream\C#\OOP 2\Project\WindowsFormsApp1\WindowsFormsApp1\obj\Release\WindowsFormsApp1.exe
+C:\Users\Nodz\Desktop\The dream\C#\OOP 2\Project\WindowsFormsApp1\WindowsFormsApp1\obj\Release\WindowsFormsApp1.pdb
+C:\Users\Nodz\Desktop\The dream\C#\OOP 2\Project\WindowsFormsApp1\WindowsFormsApp1\bin\Release\System.Data.OleDb.dll
+C:\Users\Nodz\Desktop\The dream\C#\OOP 2\Project\WindowsFormsApp1\WindowsFormsApp1\bin\Release\System.Data.OleDb.xml
+C:\Users\Nodz\Desktop\The dream\C#\OOP 2\Project\WindowsFormsApp1\WindowsFormsApp1\obj\Release\WindowsFormsApp1.csproj.CopyComplete
+C:\Users\Nodz\Desktop\The dream\C#\OOP 2\Project\WindowsFormsApp1\WindowsFormsApp1\obj\Release\WindowsFormsApp1.Register.resources
+Z:\L25Y13W09\Project\WindowsFormsApp1\WindowsFormsApp1\bin\Release\WindowsFormsApp1.exe.config
+Z:\L25Y13W09\Project\WindowsFormsApp1\WindowsFormsApp1\bin\Release\WindowsFormsApp1.exe
+Z:\L25Y13W09\Project\WindowsFormsApp1\WindowsFormsApp1\bin\Release\WindowsFormsApp1.pdb
+Z:\L25Y13W09\Project\WindowsFormsApp1\WindowsFormsApp1\bin\Release\System.Data.OleDb.dll
+Z:\L25Y13W09\Project\WindowsFormsApp1\WindowsFormsApp1\bin\Release\System.Data.OleDb.xml
+Z:\L25Y13W09\Project\WindowsFormsApp1\WindowsFormsApp1\obj\Release\WindowsFormsApp1.csproj.AssemblyReference.cache
+Z:\L25Y13W09\Project\WindowsFormsApp1\WindowsFormsApp1\obj\Release\WindowsFormsApp1.csproj.SuggestedBindingRedirects.cache
+Z:\L25Y13W09\Project\WindowsFormsApp1\WindowsFormsApp1\obj\Release\WindowsFormsApp1.Form1.resources
+Z:\L25Y13W09\Project\WindowsFormsApp1\WindowsFormsApp1\obj\Release\WindowsFormsApp1.Form2.resources
+Z:\L25Y13W09\Project\WindowsFormsApp1\WindowsFormsApp1\obj\Release\WindowsFormsApp1.Register.resources
+Z:\L25Y13W09\Project\WindowsFormsApp1\WindowsFormsApp1\obj\Release\WindowsFormsApp1.Exercise.resources
+Z:\L25Y13W09\Project\WindowsFormsApp1\WindowsFormsApp1\obj\Release\WindowsFormsApp1.Form5.resources
+Z:\L25Y13W09\Project\WindowsFormsApp1\WindowsFormsApp1\obj\Release\WindowsFormsApp1.Properties.Resources.resources
+Z:\L25Y13W09\Project\WindowsFormsApp1\WindowsFormsApp1\obj\Release\WindowsFormsApp1.csproj.GenerateResource.cache
+Z:\L25Y13W09\Project\WindowsFormsApp1\WindowsFormsApp1\obj\Release\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+Z:\L25Y13W09\Project\WindowsFormsApp1\WindowsFormsApp1\obj\Release\WindowsFormsApp1.csproj.CopyComplete
+Z:\L25Y13W09\Project\WindowsFormsApp1\WindowsFormsApp1\obj\Release\WindowsFormsApp1.exe
+Z:\L25Y13W09\Project\WindowsFormsApp1\WindowsFormsApp1\obj\Release\WindowsFormsApp1.pdb
