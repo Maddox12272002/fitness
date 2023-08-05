@@ -95,6 +95,7 @@
     <Compile Include="Execute.Designer.cs">
       <DependentUpon>Execute.cs</DependentUpon>
     </Compile>
+    <Compile Include="staticClass.cs" />
     <Compile Include="TrainerSelect.cs">
       <SubType>Form</SubType>
     </Compile>

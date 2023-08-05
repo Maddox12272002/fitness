@@ -111,7 +111,7 @@ namespace WindowsFormsApp1
             else if (muscle == true && level == true && target == true) //True all
                 queryMain = "Select Exercise from Exercise where MuscleGroup = '" + group + "' and Level = '" + lev + "' and Target ='" + targ + "'";
             
-            using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
+            using (con = new OleDbConnection(staticClass.connString))
             {
                 con.Open();
                 cmd = new OleDbCommand();
@@ -137,7 +137,7 @@ namespace WindowsFormsApp1
             target_filter.Items.Add("Upper");
             target_filter.Items.Add("Core");
             target_filter.Items.Add("Lower");
-            using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
+            using (con = new OleDbConnection(staticClass.connString))
             {
                 con.Open();
                 cmd = new OleDbCommand();
@@ -166,7 +166,7 @@ namespace WindowsFormsApp1
                 add_btn.Location = new Point(128, 312);
             }
 
-            using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
+            using (con = new OleDbConnection(staticClass.connString))
             {
                 try
                 {

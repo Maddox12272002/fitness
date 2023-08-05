@@ -32,7 +32,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-                using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
+                using (con = new OleDbConnection(staticClass.connString))
                 {
                     try
                     {
@@ -90,7 +90,7 @@ namespace WindowsFormsApp1
                             cmd.ExecuteNonQuery();
                             con.Close();
 
-                            query = "Update Account Set WeightKg = @kg, WeightLbs = @lbs, HeightCm = @cm, HeightFt=@ft where Username = @user";
+                            query = "Update Client Set WeightKg = @kg, WeightLbs = @lbs, HeightCm = @cm, HeightFt=@ft where Username = @user";
                             cmd = new OleDbCommand(query, con);
                             cmd.Parameters.AddWithValue("@kg", weightKg);
                             cmd.Parameters.AddWithValue("@lbs", weightLbs);
@@ -119,7 +119,7 @@ namespace WindowsFormsApp1
 
         private void Update_Load(object sender, EventArgs e)
         {
-            using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
+            using (con = new OleDbConnection(staticClass.connString))
             {
                 try
                 {

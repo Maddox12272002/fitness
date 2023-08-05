@@ -53,10 +53,10 @@ namespace WindowsFormsApp1
         {
             if (regisUser.Text != "" && regisPass.Text != "")
             {
-                using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
+                using (con = new OleDbConnection(staticClass.connString))
                 {
                     //Make a Query, mangutana ra ta sa database
-                    string query = "Select * from [User] Where username ='" + regisUser.Text + "'";
+                    string query = "Select * from [User] Where Username ='" + regisUser.Text + "'";
                     //Create an object that will send query through our connection to the sql server
                     bridge = new OleDbDataAdapter(query, con);
                     //Datable to put matching login info
@@ -98,7 +98,7 @@ namespace WindowsFormsApp1
                             con.Close();
 
                             DateTime date = DateTime.Parse(Register2.bday);
-                            query = "Insert into [Account] (Username, [Name], [Age], HeightCm,WeightKg,HeightFt,WeightLbs,Birthday) values (@user,@name,@age,@cm,@kg,@ft,@lbs,@bd)";
+                            query = "Insert into Client (Username, clientName, clientAge, HeightCm,WeightKg,HeightFt,WeightLbs,Birthday) values (@user,@name,@age,@cm,@kg,@ft,@lbs,@bd)";   
                             cmd = new OleDbCommand(query, con);
                             cmd.Parameters.AddWithValue("@user", regisUser.Text);
                             cmd.Parameters.AddWithValue("@name", Register2.name);

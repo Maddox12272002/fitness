@@ -100,7 +100,7 @@ namespace WindowsFormsApp1
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
+            using (con = new OleDbConnection(staticClass.connString))
             {
                 string query = "Select AccountType from [User] Where username ='" + Form1.user + "'";
                 bridge = new OleDbDataAdapter(query, con);
@@ -115,7 +115,7 @@ namespace WindowsFormsApp1
                     setting_lbl.Location = new Point(28, 154);
                     logout_lbl.Location = new Point(28, 211);
                 }
-                else if (accType == "Member" && trainer != Form1.user)
+                else if (accType == "Member" && trainer != "")
                 {
                     edit_lbl.Visible = false;
                     exercise_lbl.Location = new Point(28, 43);
@@ -124,15 +124,13 @@ namespace WindowsFormsApp1
                     logout_lbl.Location = new Point(28, 211);
                 }
 
-                //Make a Query, mangutana ra ta sa database
-                query = "Select * from Account Where username ='" + Form1.user + "'";
-                //Create an object that will send query through our connection to the sql server
+
+                query = "Select * from Client Where username ='" + Form1.user + "'";
                 bridge = new OleDbDataAdapter(query, con);
-                //Datable to put matching login info
                 dtbl = new DataTable();
-                //Fill the table with matching info from textbox 1 and 2 and user and pass from database
                 bridge.Fill(dtbl);
-                if (dtbl.Rows[0][9].ToString() == "" && accType!="Trainer")
+
+                if (dtbl.Rows[0][9].ToString() == "" && accType!="Trainer" && TrainerSelect.done == true)
                 {
                     TrainerSelect trainer = new TrainerSelect();
                     Close(); trainer.Show();
@@ -250,7 +248,7 @@ namespace WindowsFormsApp1
 
                 File.Copy(openFileDialog.FileName, dest, true);
 
-                using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
+                using (con = new OleDbConnection(staticClass.connString))
                 {
                     byte[] imageData = null;
                     FileStream fstream = new FileStream(img_path.Text, FileMode.Open, FileAccess.Read);

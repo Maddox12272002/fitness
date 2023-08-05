@@ -84,7 +84,7 @@ namespace WindowsFormsApp1
 
         private void dlt_btn_Click(object sender, EventArgs e)
         {
-            using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
+            using (con = new OleDbConnection(staticClass.connString))
             {
                 string query = "Delete From Routine where Exercise = @exer";
                 cmd = new OleDbCommand(query, con);
@@ -99,7 +99,7 @@ namespace WindowsFormsApp1
         internal void add_Click(object sender, EventArgs e, string user)
         {
             userlist.Text = user;
-            using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
+            using (con = new OleDbConnection(staticClass.connString))
             {
                 try
                 {
@@ -132,7 +132,7 @@ namespace WindowsFormsApp1
                 userlist.Text = Form1.user;
             }
 
-            using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
+            using (con = new OleDbConnection(staticClass.connString))
             {
                 try
                 {
@@ -167,7 +167,7 @@ namespace WindowsFormsApp1
         }
         private void clear_btn_Click(object sender, EventArgs e)
         {
-            using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
+            using (con = new OleDbConnection(staticClass.connString))
             {
                 string query = "Delete From Routine where Username = @user";
                 cmd = new OleDbCommand(query, con);
@@ -179,7 +179,7 @@ namespace WindowsFormsApp1
         }
         public void Routine()
         {
-            using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
+            using (con = new OleDbConnection(staticClass.connString))
             {
                 string query = "Select * from Routine Where username ='" + userlist.SelectedItem.ToString() + "'";
                 bridge = new OleDbDataAdapter(query, con);

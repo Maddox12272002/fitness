@@ -27,7 +27,7 @@ namespace WindowsFormsApp1
 
         private void Form6_Load(object sender, EventArgs e)
         {
-            using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
+            using (con = new OleDbConnection(staticClass.connString))
             {
                 string query = "Select * from [User] Where username ='" + Form1.user + "'";
                 //Create an object that will send query through our connection to the sql server
@@ -40,7 +40,7 @@ namespace WindowsFormsApp1
                 pass_txtbox.Text = dtbl.Rows[0][1].ToString();
                 accType_txtbox.Text = dtbl.Rows[0][3].ToString();
 
-                query = "Select * from Account Where username ='" + Form1.user + "'";
+                query = "Select * from Client Where username ='" + Form1.user + "'";
                 bridge = new OleDbDataAdapter(query, con);
                 dtbl = new DataTable();
                 bridge.Fill(dtbl);
@@ -159,7 +159,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-                using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
+                using (con = new OleDbConnection(staticClass.connString))
                 {
                     try
                     {

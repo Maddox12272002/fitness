@@ -20,6 +20,7 @@ namespace WindowsFormsApp1
         OleDbCommand cmd;
         internal protected bool mouseDown;
         internal protected Point lastLocation;
+        static internal protected bool done = false;
         Form2 home = new Form2();
 
         public TrainerSelect()
@@ -29,7 +30,7 @@ namespace WindowsFormsApp1
 
         private void TrainerSelect_Load(object sender, EventArgs e)
         {
-            using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
+            using (con = new OleDbConnection(staticClass.connString))
             {
                 try
                 {
@@ -55,13 +56,13 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
+            using (con = new OleDbConnection(staticClass.connString))
             {
                 if (trainerlist.Text == "")
                     MessageBox.Show("Please select a trainer!", "Trainer Select", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                 {
-                    string query = "Update Account Set Trainer = @train where Username = @user";
+                    string query = "Update Client Set Trainer = @train where Username = @user";
                     cmd = new OleDbCommand(query, con);
                     con.Open();
                     cmd.Parameters.AddWithValue("@train", trainerlist.Text);
@@ -74,21 +75,7 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
-            {
-                if (trainerlist.Text == "")
-                    MessageBox.Show("Please select a trainer!", "Trainer Select", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                else
-                {
-                    string query = "Update Account Set Trainer = @train where Username = @user";
-                    cmd = new OleDbCommand(query, con);
-                    con.Open();
-                    cmd.Parameters.AddWithValue("@train", Form1.user);
-                    cmd.Parameters.AddWithValue("@user", Form1.user);
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            Close(); home.Show();
+            done = true; Close(); home.Show();
         }
         private void Exercise_MouseDown(object sender, MouseEventArgs e)
         {

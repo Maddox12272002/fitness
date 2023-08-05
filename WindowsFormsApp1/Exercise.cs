@@ -72,20 +72,20 @@ namespace WindowsFormsApp1
                 userlist.Visible = false;
             }
 
-            using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
+            using (con = new OleDbConnection(staticClass.connString))
             {
                 try
                 {
                     con.Open();
                     cmd = new OleDbCommand();
                     cmd.Connection = con;
-                    string query = "Select Name from Account where Trainer = '"+Form2.username+"'";
+                    string query = "Select clientName from Client where Trainer = '"+Form2.username+"'";
                     cmd.CommandText = query;
 
                     OleDbDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        userlist.Items.Add(reader["Name"].ToString()); //Lists all of the users' name in the comboBox
+                        userlist.Items.Add(reader["clientName"].ToString()); //Lists all of the users' name in the comboBox
                     }
 
                     if (Form2.accType == "Member")
@@ -104,7 +104,7 @@ namespace WindowsFormsApp1
 
         internal void Routine(object sender, EventArgs e)
         {
-            using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
+            using (con = new OleDbConnection(staticClass.connString))
             {
                 string query = "Select * from Routine Where username ='" + userlist.Text + "'";
                 bridge = new OleDbDataAdapter(query, con);
@@ -114,7 +114,7 @@ namespace WindowsFormsApp1
                 dataGridView1.DataSource = dtbl;
                 dataGridView1.Columns[0].Visible = false;
                 con.Close();
-            }
+            } 
         }
 
         private void Exercise_MouseDown(object sender, MouseEventArgs e)

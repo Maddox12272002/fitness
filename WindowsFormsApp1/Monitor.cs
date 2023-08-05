@@ -42,13 +42,13 @@ namespace WindowsFormsApp1
             else
             {
                 weightUpdate.Visible = false;
-                using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
+                using (con = new OleDbConnection(staticClass.connString))
                 {
                     try
                     {
                         con.Open();
                         cmd.Connection = con;
-                        string query = "Select Username from Account where Trainer = '" + Form2.username + "'";
+                        string query = "Select Username from Client where Trainer = '" + Form2.username + "'";
                         cmd.CommandText = query;
                         OleDbDataReader reader = cmd.ExecuteReader();
 
@@ -116,7 +116,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-                using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
+                using (con = new OleDbConnection(staticClass.connString))
                 {
                     string query = "";
                     if (Form2.accType == "Member")
@@ -164,7 +164,7 @@ namespace WindowsFormsApp1
             y_label.Visible = true;
             y_label.Text = "CM";
             label2.Text = "h";
-            using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
+            using (con = new OleDbConnection(staticClass.connString))
             {
                 string query = "";
                 if (Form2.accType == "Member")
@@ -205,7 +205,7 @@ namespace WindowsFormsApp1
             bmi_lbl.BackColor = Color.FromArgb(182, 26, 40);
             height_lbl.BackColor = Color.Transparent;
             y_label.Visible = false;
-            using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
+            using (con = new OleDbConnection(staticClass.connString))
             {
                 string query = "";
                 if (Form2.accType == "Member")

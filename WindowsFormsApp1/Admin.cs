@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Data.OleDb;
 using System.Drawing;
 using System.IO;
@@ -30,14 +31,16 @@ namespace WindowsFormsApp1
         }
         public void load()
         {
-            using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
+            using (con = new OleDbConnection(staticClass.connString))
             {
-                string query = "SELECT User.Username, User.Password, Account.Name, Account.Age, User.AccountType\r\nFROM [User] INNER JOIN Account ON User.Username = Account.Username;\r\n";
+                string query = "SELECT User.Username AS Username, Trainer.trainerName AS Name, Trainer.trainerAge AS Age, Trainer.BMI\r\nFROM [User] INNER JOIN (Client INNER JOIN Trainer ON Client.Trainer = Trainer.Username) ON User.Username = Trainer.Username;\r\n";
                 bridge = new OleDbDataAdapter(query, con);
                 ds = new DataSet();
                 con.Open();
                 bridge.Fill(ds, "[User]");
                 dataGridView1.DataSource = ds.Tables["[User]"];
+
+                dataGridView1.ClearSelection();
             }
         }
         private void button1_Click(object sender, EventArgs e)
@@ -52,9 +55,6 @@ namespace WindowsFormsApp1
             name.Visible = true;
             edad.Visible = true;
             button4.Visible = true;
-            acc_type.Visible = true;
-            trainer_btn.Visible = true;
-            member_btn.Visible = true;
             cancel_btn.Visible = true;
         }
         private void button3_Click(object sender, EventArgs e)
@@ -74,7 +74,7 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
+            using (con = new OleDbConnection(staticClass.connString))
             {
                 string query = "Delete From [User] where Username = @user";
                 cmd = new OleDbCommand(query, con);
@@ -117,6 +117,19 @@ namespace WindowsFormsApp1
             DataGridViewRow row = dataGridView1.Rows[indexRow];
             textBox1.Text = row.Cells[0].Value.ToString();
             textBox2.Text = row.Cells[1].Value.ToString();
+
+            using (con = new OleDbConnection(staticClass.connString))
+            {
+                string query = "SELECT Username, clientName AS Name FROM Client WHERE Trainer = @train";
+                con.Open();
+                OleDbCommand cmd = new OleDbCommand(query, con);
+                cmd.Parameters.AddWithValue("@train", row.Cells[0].Value.ToString());
+                bridge = new OleDbDataAdapter(cmd);
+                ds = new DataSet();
+                bridge.Fill(ds, "Client");
+                dataGridView2.DataSource = ds.Tables["Client"];
+                dataGridView2.ClearSelection();
+            }
         }
         private void Register_MouseDown(object sender, MouseEventArgs e)
         {
@@ -146,9 +159,9 @@ namespace WindowsFormsApp1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
+            using (con = new OleDbConnection(staticClass.connString))
             {
-                string query = "Insert into Account (Username, [Name], [Age]) values (@user,@name,  @age)";
+                string query = "Insert into Trainer (Username, [Name], [Age]) values (@user,@name, @age)";
                 cmd = new OleDbCommand(query, con);
                 cmd.Parameters.AddWithValue("@user", regisUser.Text);
                 cmd.Parameters.AddWithValue("@name", name.Text);
@@ -158,11 +171,6 @@ namespace WindowsFormsApp1
                 cmd.ExecuteNonQuery();
                 con.Close();
 
-                string acc = "";
-                if (trainer_btn.Checked)
-                    acc = "Trainer";
-                else
-                    acc = "Member";
                 byte[] imageData = null;
                 FileStream fstream = new FileStream("Default.jpg", FileMode.Open, FileAccess.Read);
                 BinaryReader br = new BinaryReader(fstream);
@@ -173,27 +181,14 @@ namespace WindowsFormsApp1
                 cmd.Parameters.AddWithValue("@user", regisUser.Text);
                 cmd.Parameters.AddWithValue("@pass", regisPass.Text);
                 cmd.Parameters.AddWithValue("@img", imageData);
-                cmd.Parameters.AddWithValue("@acc", acc);
+                cmd.Parameters.AddWithValue("@acc", "Trainer");
                 con.Open();
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
 
             MessageBox.Show("Account has been added!");
-            label5.Visible =false;
-            label4.Visible = false;
-            label6.Visible = false;
-            label8.Visible = false;
-            label7.Visible = false;
-            regisUser.Visible = false;
-            regisPass.Visible = false;
-            name.Visible = false;
-            edad.Visible = false;
-            button4.Visible = false;
-            acc_type.Visible = false;
-            trainer_btn.Visible = false;
-            member_btn.Visible = false;
-            cancel_btn.Visible = false;
+            cancel_btn_Click(sender, e);
             load();
         }
 
@@ -209,10 +204,38 @@ namespace WindowsFormsApp1
             name.Visible = false;
             edad.Visible = false;
             button4.Visible = false;
-            acc_type.Visible = false;
-            trainer_btn.Visible = false;
-            member_btn.Visible = false;
             cancel_btn.Visible = false;
+        }
+
+        private void userList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (userList.SelectedIndex == 0)
+            {
+                load();
+                dataGridView2.Visible = true;
+                clienttxt.Visible = true;
+            }
+            else
+            {
+
+                using (con = new OleDbConnection(staticClass.connString))
+                {
+                    string query = "SELECT User.Username AS Username, Client.clientName AS Name, Client.clientAge AS Age, Client.HeightCm, Client.WeightKg, Client.HeightFt, Client.WeightLbs, Client.BMI, Client.Trainer\r\nFROM [User] INNER JOIN Client ON User.Username = Client.Username;\r\n";
+                    bridge = new OleDbDataAdapter(query, con);
+                    ds = new DataSet();
+                    con.Open();
+                    bridge.Fill(ds, "[User]");
+                    dataGridView1.DataSource = ds.Tables["[User]"];
+
+                    dataGridView1.Columns[0].Name = "Username";
+                    dataGridView1.Columns[1].Name = "Name";
+                    dataGridView1.Columns[2].Name = "Age";
+                    dataGridView1.ClearSelection();
+
+                    dataGridView2.Visible = false;
+                    clienttxt.Visible = false;
+                }
+            }
         }
     }
 }

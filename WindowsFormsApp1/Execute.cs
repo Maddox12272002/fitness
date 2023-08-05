@@ -31,7 +31,7 @@ namespace WindowsFormsApp1
         {
             try
             {
-                using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
+                using (con = new OleDbConnection(staticClass.connString))
                 {
                     string query = "Select * from Routine Where username ='" + Form1.user + "'";
                     bridge = new OleDbDataAdapter(query, con);

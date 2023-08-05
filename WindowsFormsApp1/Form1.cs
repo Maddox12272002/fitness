@@ -30,7 +30,7 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             //Make a Query, mangutana ra ta sa database
-            using (con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb;Jet OLEDB:Database Password=project;"))
+            using (con = new OleDbConnection(staticClass.connString))
             {
                 string query = "Select * from [User] Where username ='" + user_txt.Text + "' and password = '" + pass_txt.Text + "'";
                 //Create an object that will send query through our connection to the sql server

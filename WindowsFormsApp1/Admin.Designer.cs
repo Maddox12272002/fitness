@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -51,26 +52,30 @@
             this.name = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.cancel_btn = new System.Windows.Forms.Button();
-            this.member_btn = new System.Windows.Forms.RadioButton();
-            this.trainer_btn = new System.Windows.Forms.RadioButton();
-            this.acc_type = new System.Windows.Forms.Label();
+            this.userList = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.clienttxt = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("SansSerif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(302, 56);
+            this.dataGridView1.Location = new System.Drawing.Point(302, 92);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(402, 279);
+            this.dataGridView1.Size = new System.Drawing.Size(274, 255);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.TabStop = false;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
@@ -316,46 +321,59 @@
             this.cancel_btn.Visible = false;
             this.cancel_btn.Click += new System.EventHandler(this.cancel_btn_Click);
             // 
-            // member_btn
+            // userList
             // 
-            this.member_btn.AutoSize = true;
-            this.member_btn.BackColor = System.Drawing.Color.Transparent;
-            this.member_btn.ForeColor = System.Drawing.Color.White;
-            this.member_btn.Location = new System.Drawing.Point(238, 292);
-            this.member_btn.Name = "member_btn";
-            this.member_btn.Size = new System.Drawing.Size(63, 17);
-            this.member_btn.TabIndex = 37;
-            this.member_btn.TabStop = true;
-            this.member_btn.Text = "Member";
-            this.member_btn.UseVisualStyleBackColor = false;
-            this.member_btn.Visible = false;
+            this.userList.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userList.FormattingEnabled = true;
+            this.userList.Items.AddRange(new object[] {
+            "Trainer",
+            "Member"});
+            this.userList.Location = new System.Drawing.Point(612, 36);
+            this.userList.Name = "userList";
+            this.userList.Size = new System.Drawing.Size(90, 26);
+            this.userList.TabIndex = 38;
+            this.userList.Text = "Trainer";
+            this.userList.SelectedIndexChanged += new System.EventHandler(this.userList_SelectedIndexChanged);
             // 
-            // trainer_btn
+            // label9
             // 
-            this.trainer_btn.AutoSize = true;
-            this.trainer_btn.BackColor = System.Drawing.Color.Transparent;
-            this.trainer_btn.Checked = true;
-            this.trainer_btn.ForeColor = System.Drawing.Color.White;
-            this.trainer_btn.Location = new System.Drawing.Point(238, 271);
-            this.trainer_btn.Name = "trainer_btn";
-            this.trainer_btn.Size = new System.Drawing.Size(58, 17);
-            this.trainer_btn.TabIndex = 36;
-            this.trainer_btn.TabStop = true;
-            this.trainer_btn.Text = "Trainer";
-            this.trainer_btn.UseVisualStyleBackColor = false;
-            this.trainer_btn.Visible = false;
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(541, 41);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(66, 18);
+            this.label9.TabIndex = 39;
+            this.label9.Text = "User list:";
             // 
-            // acc_type
+            // dataGridView2
             // 
-            this.acc_type.BackColor = System.Drawing.Color.Transparent;
-            this.acc_type.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.acc_type.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.acc_type.Location = new System.Drawing.Point(209, 251);
-            this.acc_type.Name = "acc_type";
-            this.acc_type.Size = new System.Drawing.Size(82, 19);
-            this.acc_type.TabIndex = 35;
-            this.acc_type.Text = "Account Type:";
-            this.acc_type.Visible = false;
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("SansSerif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(582, 92);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView2.Size = new System.Drawing.Size(120, 255);
+            this.dataGridView2.TabIndex = 40;
+            this.dataGridView2.TabStop = false;
+            // 
+            // clienttxt
+            // 
+            this.clienttxt.AutoSize = true;
+            this.clienttxt.BackColor = System.Drawing.Color.Transparent;
+            this.clienttxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clienttxt.ForeColor = System.Drawing.Color.White;
+            this.clienttxt.Location = new System.Drawing.Point(609, 71);
+            this.clienttxt.Name = "clienttxt";
+            this.clienttxt.Size = new System.Drawing.Size(53, 18);
+            this.clienttxt.TabIndex = 42;
+            this.clienttxt.Text = "Clients";
             // 
             // Admin
             // 
@@ -364,9 +382,10 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(223)))), ((int)(((byte)(43)))));
             this.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.set__2_1;
             this.ClientSize = new System.Drawing.Size(716, 383);
-            this.Controls.Add(this.member_btn);
-            this.Controls.Add(this.trainer_btn);
-            this.Controls.Add(this.acc_type);
+            this.Controls.Add(this.clienttxt);
+            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.userList);
             this.Controls.Add(this.cancel_btn);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.edad);
@@ -399,6 +418,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.edad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -428,8 +448,9 @@
         private System.Windows.Forms.TextBox name;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button cancel_btn;
-        private System.Windows.Forms.RadioButton member_btn;
-        private System.Windows.Forms.RadioButton trainer_btn;
-        private System.Windows.Forms.Label acc_type;
+        private System.Windows.Forms.ComboBox userList;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Label clienttxt;
     }
 }
